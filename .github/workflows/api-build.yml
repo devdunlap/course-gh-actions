@@ -19,7 +19,12 @@ jobs:
         working-directory: ./api
       - run: dotnet test
         working-directory: ./api
-        ###
+      - name: Start API and test endpoint
+        run: |
+          dotnet run --project ./api &
+          sleep 10
+          curl -f http://localhost:5000/weatherforecast || exit 1
+          pkill -f "dotnet.*api"
 
 
 
