@@ -23,7 +23,7 @@ jobs:
         run: |
           dotnet run --project ./api &
           sleep 10
-          curl -f http://localhost:5000/weatherforecast || exit 1
+          curl -f http://localhost:5048/weatherforecast || exit 1
           pkill -f "dotnet.*api"
 
 
